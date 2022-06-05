@@ -12,7 +12,14 @@ namespace Biblioteca.Controllers
         }
 
         [HttpPost]
+
         public IActionResult Cadastro(Livro l)
+
+        {
+            if (l.Autor ==  "" || l.Ano==0 || l.Titulo == ""){  
+               
+            } else
+
         {
             LivroService livroService = new LivroService();
 
@@ -22,12 +29,14 @@ namespace Biblioteca.Controllers
             }
             else
             {
+              
                 livroService.Atualizar(l);
             }
 
+            }
             return RedirectToAction("Listagem");
         }
-
+        
         public IActionResult Listagem(string tipoFiltro, string filtro)
         {
             Autenticacao.CheckLogin(this);
@@ -51,3 +60,4 @@ namespace Biblioteca.Controllers
         }
     }
 }
+
